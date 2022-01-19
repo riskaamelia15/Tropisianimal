@@ -22,11 +22,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="{{ asset('assets/img/x1/Group 77.png') }}" width="100%">
+                    {{-- Default Image --}}
+                    {{-- <img src="{{ asset('assets/img/x1/Group 77.png') }}" width="100%"> --}}
 
                     @if ($posts->count())
                         <div class="card my-3">
-                            <img src="https://source.unsplash.com/1200x400?nature,animal" class="card-img-top" alt="...">
+                            <img src="https://source.unsplash.com/1190x400?nature,animal" class="card-img-top" alt="...">
                         </div>
                     @else
                         <p class="text-center fs-4">Tidak ada postingan</p>
@@ -40,8 +41,7 @@
             <div class="row">
                 @foreach ($posts->skip(1) as $post)
                     <div class="col-md-3 mb-4">
-                        <img class="card-img-top" src="https://source.unsplash.com/190x150?nature,animal"
-                            alt="Card image cap">
+                        <img src="https://source.unsplash.com/255x170?nature,animal">
                     </div>
                 @endforeach
             </div>

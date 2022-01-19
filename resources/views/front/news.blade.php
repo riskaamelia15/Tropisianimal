@@ -28,32 +28,48 @@
                         <table class="table table-borderless">
                             <tr>
                                 <td rowspan="2">
-                                    <img src="{{ asset('assets/img/x2/zoe-reeve-9hSejnboeTY-unsplash@2x.png') }}"
-                                        style="height: 29rem">
+                                    <img src="https://source.unsplash.com/300x500?nature,animal" class="card-img-top"
+                                        alt="...">
+
+                                    {{-- Default image --}}
+                                    {{-- <img src="{{ asset('assets/img/x2/zoe-reeve-9hSejnboeTY-unsplash@2x.png') }}"
+                                        style="height: 29rem"> --}}
                                 </td>
 
                                 <td>
-                                    <img src="{{ asset('assets/img/x1/ronald-gijezen-7h06P9UKhYY-unsplash.png') }}"
-                                        style="width: 100%; height: 12rem;">
+                                    <img src="https://source.unsplash.com/300x200?nature,animal" class="card-img-top"
+                                        alt="...">
+
+                                    {{-- Default image --}}
+                                    {{-- <img src="{{ asset('assets/img/x1/ronald-gijezen-7h06P9UKhYY-unsplash.png') }}"
+                                        style="width: 100%; height: 12rem;"> --}}
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <img src="{{ asset('assets/img/x1/david-clode-AtCChdVhAmA-unsplash.png') }}"
-                                        style="width: 100%; height: 253px;">
+                                    <img src="https://source.unsplash.com/300x280?nature,animal" class="card-img-top"
+                                        alt="...">
+
+                                    {{-- Default image --}}
+                                    {{-- <img src="{{ asset('assets/img/x1/david-clode-AtCChdVhAmA-unsplash.png') }}"
+                                        style="width: 100%; height: 253px;"> --}}
                                 </td>
                             </tr>
                         </table>
                     </div>
 
                     <div class="col-md-6">
-                        <h1>10 Hewan Herbivora Yang Berbahaya </h1>
+                        <h1>{{ $posts[0]->title }}</h1>
+
+                        {{-- Excerpt
+                            {{ $posts[0]->excerpt }} --}}
                         <p style="font-weight: bold; font-size: 19px;">Lorem ipsum dolor sit amet, consectur adipiscing
                             elit, sed do euismod tempor incididunt ut labore et
                             dolore magna aliqua. Ut enim ad minim veniam, quis
                         </p>
-                        <P style="font-size: 19px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        <P style="font-size: 19px;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             euismod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco
                             laboris nisi ut aliquip ex ea commodo consequat
@@ -72,24 +88,6 @@
                     </div>
                 </div>
 
-
-                <div class="card mb-3">
-                    <img src="https://source.unsplash.com/1200x200?nature,animal" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h1 class="card-title">{{ $posts[0]->title }}</h1>
-                        <p class="card-text fw-bold">{{ $posts[0]->excerpt }}</p>
-
-                        <a href="/news/{{ $posts[0]->slug }}" class="btn btn-success" style="background-color: green"
-                            active>
-                            baca selengkapnya
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
             </div>
 
             <br>

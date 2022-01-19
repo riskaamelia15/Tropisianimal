@@ -416,13 +416,6 @@
 
     {{-- Galery's Slider --}}
     <div id="carousel" class="carousel owl-carousel owl-theme" style="margin-bottom: -50px">
-        @foreach ($posts as $post)
-            <div class="item">
-                <a href="/galery">
-                    <img src="https://source.unsplash.com/190x135?nature,animal">
-                </a>
-            </div>
-        @endforeach
 
         <div class="item">
             <a href="/galery">
@@ -444,6 +437,14 @@
                 <img src="{{ asset('assets/img/x1/david-clode-0lwa8Dprrzs-unsplash.png') }}">
             </a>
         </div>
+
+        @foreach ($posts as $post)
+            <div class="item">
+                <a href="/galery">
+                    <img src="https://source.unsplash.com/190x135?nature,animal">
+                </a>
+            </div>
+        @endforeach
     </div>
     {{-- End Galery's Slider --}}
 
