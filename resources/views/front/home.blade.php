@@ -388,3 +388,78 @@
     </main>
     {{-- End Main Content --}}
 @endsection
+
+@section('galery')
+
+    {{-- Galery's Head --}}
+    <div class="container px-2 px-lg-3">
+        <div class="row justify-content-left">
+            <div class="col-xl-12">
+                <font color="MediumSeaGreen">
+                    <a href="/galery" style="text-decoration: none; color: green;">
+                        <b>Galeri</b>
+                    </a>
+
+                </font>
+                <h1>
+                    <b>
+                        Lihat Lebih Banyak Hewan Tropis <br>
+                        Pada Galeri Kami
+                    </b>
+                </h1>
+            </div>
+        </div>
+    </div>
+    {{-- End Galery's Head --}}
+
+    <br>
+
+    {{-- Galery's Slider --}}
+    <div id="carousel" class="carousel owl-carousel owl-theme" style="margin-bottom: -50px">
+        @foreach ($posts as $post)
+            <div class="item">
+                <a href="/galery">
+                    <img src="https://source.unsplash.com/190x135?nature,animal">
+                </a>
+            </div>
+        @endforeach
+
+        <div class="item">
+            <a href="/galery">
+                <img src="{{ asset('assets/img/x1/kyaw-tun-_YIX48_4hgs-unsplash.png') }}">
+            </a>
+        </div>
+        <div class="item">
+            <a href="/galery">
+                <img src="{{ asset('assets/img/x1/dawn-armfield-84n7c9cLEKM-unsplash.png') }}">
+            </a>
+        </div>
+        <div class="item">
+            <a href="/galery">
+                <img src="{{ asset('assets/img/x1/oscar-merchant-sCt1TLNIxFw-unsplash.png') }}" style="height: 15rem">
+            </a>
+        </div>
+        <div class="item">
+            <a href="/galery">
+                <img src="{{ asset('assets/img/x1/david-clode-0lwa8Dprrzs-unsplash.png') }}">
+            </a>
+        </div>
+    </div>
+    {{-- End Galery's Slider --}}
+
+    {{-- Script For Galery --}}
+    <script src="js/carousel/jquery.min.js"></script>
+    <script src="js/carousel/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function() {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                loop: true,
+                items: 4,
+                autoplay: true,
+                dots: false,
+                animateOut: 'fadeOut'
+            });
+        })
+    </script>
+@endsection
