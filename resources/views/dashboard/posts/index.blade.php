@@ -29,13 +29,15 @@
 
             <a href="/dashboard/posts/create" class="btn btn-primary">Create new post</a>
 
-            <table class="table table-striped table-sm my-4">
+            <table class="table table-striped table-sm my-4 text-center">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Title</th>
                         <th scope="col">Excerpt</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">View</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,13 +48,16 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->excerpt }}</td>
                             <td>
-                                <a href="/dashboard/posts/{{ $post->slug }}" class="badge badge-info">
+                                <a href="/dashboard/posts/{{ $post->slug }}" class="badge badge-info border-0">
                                     <i class="nav-icon far fa-eye"></i>
                                 </a>
-                                <a href="/dashboard/posts/{{ $post->id }}" class=" badge badge-warning">
+                            </td>
+                            <td>
+                                <a href="/dashboard/posts/{{ $post->id }}" class=" badge badge-warning border-0">
                                     <i class="nav-icon far fa-edit"></i>
                                 </a>
-
+                            </td>
+                            <td>
                                 <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
                                     @method('delete')
                                     @csrf
