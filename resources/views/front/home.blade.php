@@ -209,9 +209,11 @@
         {{-- News's Body --}}
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="card">
                         <a href="{{ url('news') }}">
+
+                            default news
                             <div style="background-color: rgb(245, 238, 238)">
                                 <img class="card-img-top"
                                     src="{{ asset('assets/img/x1/rick-l-037fCBgZB10-unsplash.png') }}"
@@ -234,6 +236,8 @@
                                     </p>
                                 </div>
                             </div>
+
+
                         </a>
                     </div>
                 </div>
@@ -292,12 +296,46 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> --}}
+
+                @foreach ($posts as $post)
+                    <div class="col-md-4 mb-4">
+                        <div class="card"
+                            style="height: 440px; width:355px; overflow:hidden; background-color: rgb(233, 233, 233);">
+                            <div>
+                                @if ($post->image)
+                                    <div style="margin-top:-16px;">
+                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid my-3"
+                                            style="height: 212px; width:352px overflow:hidden;">
+                                    </div>
+                                @else
+                                    <img class="card-img-top" style="" src="https://source.unsplash.com/352x212?animal"
+                                        alt="Card image cap">
+                                @endif
+
+                                <div class="card-body">
+                                    <p class="card-text d-block text-center" style="overflow: ">
+                                        <b>
+                                            <a href="/news/{{ $post->slug }}"
+                                                style="text-decoration: none">{{ $post->title }}</a>
+                                        </b>
+
+                                        <br>
+
+                                        <font style="color: grey" class="mb-5">
+                                            {{ $post->excerpt }}
+                                        </font>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
 
             <br>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="card">
                         <a href="{{ url('news') }}">
@@ -380,7 +418,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         {{-- End News's Body --}}
 
@@ -417,7 +455,8 @@
     {{-- Galery's Slider --}}
     <div id="carousel" class="carousel owl-carousel owl-theme" style="margin-bottom: -50px">
 
-        <div class="item">
+        {{-- Default Galery
+            <div class="item">
             <a href="/galery">
                 <img src="{{ asset('assets/img/x1/kyaw-tun-_YIX48_4hgs-unsplash.png') }}">
             </a>
@@ -436,12 +475,17 @@
             <a href="/galery">
                 <img src="{{ asset('assets/img/x1/david-clode-0lwa8Dprrzs-unsplash.png') }}">
             </a>
-        </div>
+        </div> --}}
 
         @foreach ($posts as $post)
             <div class="item">
                 <a href="/galery">
-                    <img src="https://source.unsplash.com/190x135?nature,animal">
+                    @if ($post->image)
+                        <img src="{{ asset('storage/' . $post->image) }}" class="img"
+                            style="height: 250px; width:190px overflow:hidden;">
+                    @else
+                        <img src="https://source.unsplash.com/190x135?nature,animal">
+                    @endif
                 </a>
             </div>
         @endforeach

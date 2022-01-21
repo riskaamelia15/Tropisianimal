@@ -5,22 +5,18 @@
         <div class="row my-3 p-lg-4">
             <div class="col-lg-8 mb-3">
                 <article class="mb-3">
-                    <h2><b>{{ $post->title }}</b></h2>
+                    <h2 class="text-center"><b>{{ $post->title }}</b></h2>
 
-                    <a href="/dashboard/posts" class="btn btn-success">
-                        <i class="fas fa-arrow-left"></i>
-                        Kembali
-                    </a>
-                    <a href="/posts/index" class="btn btn-warning">
-                        <i class="far fa-edit"></i>
-                        Edit
-                    </a>
-                    <a href="/posts/index" class="btn btn-danger">
-                        <i class="fas fa-times"></i>
-                        Hapus
-                    </a>
+                    <hr>
 
-                    <img src="https://source.unsplash.com/1200x400?nature,animal" class="img-fluid my-3" alt="...">
+                    @if ($post->image)
+                        <div style="max-height: 400px; overflow:hidden">
+                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid my-3">
+                        </div>
+                    @else
+                        <img src="https://source.unsplash.com/1200x400?animal" class="img-fluid my-3">
+                    @endif
+
                     {!! $post->body !!}
                 </article>
             </div>

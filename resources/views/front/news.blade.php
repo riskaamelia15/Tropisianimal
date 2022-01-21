@@ -28,51 +28,41 @@
                         <table class="table table-borderless">
                             <tr>
                                 <td rowspan="2">
-                                    <img src="https://source.unsplash.com/300x500?nature,animal" class="card-img-top"
-                                        alt="...">
+                                    @if ($posts[0]->image)
+                                        <div style="max-height: 600px; max-width:600px overflow:hidden">
+                                            <img src="{{ asset('storage/' . $posts[0]->image) }}" class="img-fluid my-3">
+                                        </div>
+                                    @else
+                                        <img src="https://source.unsplash.com/300x600?animal" class="card-img-top">
+                                    @endif
 
                                     {{-- Default image --}}
                                     {{-- <img src="{{ asset('assets/img/x2/zoe-reeve-9hSejnboeTY-unsplash@2x.png') }}"
                                         style="height: 29rem"> --}}
                                 </td>
 
-                                <td>
-                                    <img src="https://source.unsplash.com/300x200?nature,animal" class="card-img-top"
-                                        alt="...">
-
-                                    {{-- Default image --}}
-                                    {{-- <img src="{{ asset('assets/img/x1/ronald-gijezen-7h06P9UKhYY-unsplash.png') }}"
-                                        style="width: 100%; height: 12rem;"> --}}
-                                </td>
+                                {{-- <td>
+                                    Default image
+                                    <img src="{{ asset('assets/img/x1/ronald-gijezen-7h06P9UKhYY-unsplash.png') }}"
+                                        style="width: 100%; height: 12rem;">
+                                </td> --}}
                             </tr>
 
-                            <tr>
+                            {{-- <tr>
                                 <td>
-                                    <img src="https://source.unsplash.com/300x280?nature,animal" class="card-img-top"
-                                        alt="...">
-
-                                    {{-- Default image --}}
-                                    {{-- <img src="{{ asset('assets/img/x1/david-clode-AtCChdVhAmA-unsplash.png') }}"
-                                        style="width: 100%; height: 253px;"> --}}
+                                    Default image
+                                    <img src="{{ asset('assets/img/x1/david-clode-AtCChdVhAmA-unsplash.png') }}"
+                                        style="width: 100%; height: 253px;">
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </table>
                     </div>
 
                     <div class="col-md-6">
                         <h1>{{ $posts[0]->title }}</h1>
 
-                        {{-- Excerpt
-                            {{ $posts[0]->excerpt }} --}}
-                        <p style="font-weight: bold; font-size: 19px;">Lorem ipsum dolor sit amet, consectur adipiscing
-                            elit, sed do euismod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                        </p>
                         <P style="font-size: 19px;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            euismod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat
+                            {{ $posts[0]->excerpt }}
                         </P>
 
                         <a href="/news/{{ $posts[0]->slug }}">
@@ -109,22 +99,31 @@
                         {{-- Pos Baru --}}
                         @foreach ($posts->skip(1) as $post)
                             <div class="col-md-4 mb-4">
-                                <div class="card">
-                                    <div style="background-color: rgb(245, 238, 238)">
-                                        <img class="card-img-top" src="https://source.unsplash.com/352x212?nature,animal"
-                                            alt="Card image cap">
+                                <div class="card"
+                                    style="height: 440px; width:355px; overflow:hidden; background-color: rgb(233, 233, 233);">
+                                    <div>
+                                        @if ($post->image)
+                                            <div style="margin-top:-16px;">
+                                                <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid my-3"
+                                                    style="height: 212px; width:352px overflow:hidden;">
+                                            </div>
+                                        @else
+                                            <img class="card-img-top" style=""
+                                                src="https://source.unsplash.com/352x212?animal" alt="Card image cap">
+                                        @endif
+
                                         <div class="card-body">
-                                            <p class="card-text">
-                                                <center>
-                                                    <b>
-                                                        <a href="/news/{{ $post->slug }}">{{ $post->title }}</a>
-                                                    </b>
-                                                </center>
-                                                <center>
-                                                    <font color="grey">
-                                                        {{ $post->excerpt }}
-                                                    </font>
-                                                </center>
+                                            <p class="card-text d-block text-center" style="overflow: ">
+                                                <b>
+                                                    <a href="/news/{{ $post->slug }}"
+                                                        style="text-decoration: none">{{ $post->title }}</a>
+                                                </b>
+
+                                                <br>
+
+                                                <font style="color: grey" class="mb-5">
+                                                    {{ $post->excerpt }}
+                                                </font>
                                             </p>
                                         </div>
                                     </div>
@@ -135,9 +134,8 @@
                     </div>
                 </div>
 
-                <br>
-
-                <div class="container">
+                {{-- Default Post --}}
+                {{-- <div class="container">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
@@ -151,6 +149,7 @@
                                                 <b>
                                                     Apa Kabar Kebun Binatang <br>
                                                     Saat Wabah Covid 19?
+
                                                 </b>
                                             </center>
                                             <center>
@@ -181,9 +180,8 @@
                                                 </b>
                                             </center>
                                             <center>
-                                                <font color="grey">Lorem ipsum dolor sit amet,<br>consectur adipiscing
-                                                    elit,
-                                                    sed do
+                                                <font color="grey">
+                                                    Lorem ipsum dolor sit amet,consectur adipiscing elit, sed do
                                                 </font>
                                             </center>
                                         </p>
@@ -204,6 +202,7 @@
                                                 <b>
                                                     10 Hewan Herbivora<br>
                                                     Yang Berbahaya
+
                                                 </b>
                                             </center>
                                             <center>
@@ -235,8 +234,9 @@
                                         <p class="card-text">
                                             <center>
                                                 <b>
-                                                    4 Penyakit yang Ditularkan <br>
+                                                    4 Penyakit yang Ditularkan
                                                     Hewa ke Manusia
+
                                                 </b>
                                             </center>
                                             <center>
@@ -286,14 +286,13 @@
                                         <p class="card-text">
                                             <center>
                                                 <b>
-                                                    Ternyata, Tanduk Rusa Berasal <br>
+                                                    Ternyata, Tanduk Rusa Berasal
                                                     dari Sel Kanker Tulang
                                                 </b>
                                             </center>
                                             <center>
-                                                <font color="grey">Lorem ipsum dolor sit amet,<br>consectur adipiscing
-                                                    elit,
-                                                    sed do
+                                                <font color="grey">
+                                                    Lorem ipsum dolor sit amet,consectur adipiscing elit, sed do
                                                 </font>
                                             </center>
                                         </p>
@@ -302,7 +301,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <br>
 

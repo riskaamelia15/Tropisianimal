@@ -2,28 +2,20 @@
 
 @section('content')
 
-    {{-- Page Header --}}
-    <header class="masthead" style="background-image: url('https://source.unsplash.com/1200x300?nature,animal');">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-left">
-                <div class="col-md-7 col-lg-8 col-xl-7">
-                    <div class="">
-                        <font color="white">
-                            <h1><b>{{ $post->title }}</b></h1>
-                        </font>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    {{-- End Page Header --}}
-
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <article class="mb-5">
+            <div class="col-md-10">
+                <article class="my-5">
                     <h2>{{ $post->title }}</h2>
-                    <img src="https://source.unsplash.com/1200x400?nature,animal" class="img-fluid mt-3" alt="...">
+
+                    @if ($post->image)
+                        <div>
+                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="...">
+                        </div>
+                    @else
+                        <img src="https://source.unsplash.com/1200x400?animal" class="img-fluid mt-3" alt="...">
+                    @endif
+
                     {!! $post->body !!}
                 </article>
 

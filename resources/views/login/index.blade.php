@@ -28,7 +28,7 @@
             <main class="form-signin">
                 <h1 class="h3 mb-3 fw-normal">Please log in</h1>
 
-                <form method="POST" action="{{ route('dashboard.store') }}">
+                <form method="POST" action="/login">
                     @csrf
 
                     <div class="form-floating">

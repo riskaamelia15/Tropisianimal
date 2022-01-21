@@ -25,12 +25,21 @@
                     {{-- Default Image --}}
                     {{-- <img src="{{ asset('assets/img/x1/Group 77.png') }}" width="100%"> --}}
 
-                    @if ($posts->count())
-                        <div class="card my-3">
-                            <img src="https://source.unsplash.com/1190x400?nature,animal" class="card-img-top" alt="...">
+                    @if ($posts[0]->image)
+                        <div>
+                            <img style="height: 400px; width:1190px overflow:hidden"
+                                src="{{ asset('storage/' . $posts[0]->image) }}" class="img-fluid my-3">
                         </div>
                     @else
-                        <p class="text-center fs-4">Tidak ada postingan</p>
+
+                        @if ($posts->count())
+                            <div class="card my-3">
+                                <img src="https://source.unsplash.com/1190x400?animal" class="card-img-top">
+                            </div>
+                        @else
+                            <p class="text-center fs-4">Tidak ada postingan</p>
+                        @endif
+
                     @endif
 
                 </div>
@@ -40,12 +49,18 @@
 
             <div class="row">
                 @foreach ($posts->skip(1) as $post)
-                    <div class="col-md-3 mb-4">
-                        <img src="https://source.unsplash.com/255x170?nature,animal">
+                    <div class="col-md-3 mt-3">
+                        @if ($post->image)
+                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid my-3"
+                                style="height: 170px; width:255px overflow:hidden;">
+                        @else
+                            <img src="https://source.unsplash.com/255x170?animal">
+                        @endif
                     </div>
                 @endforeach
             </div>
 
+            {{-- Default Galery
             <div class="row">
                 <div class="col-md-3">
                     <img src="{{ asset('assets/img/x1/mathew-schwartz-OjQgsR1oyEw-unsplash.png') }}" width="97%">
@@ -82,7 +97,7 @@
                 <div class="col-md-3">
                     <img src="{{ asset('assets/img/x1/joshua-j-cotten-VCzNXhMoyBw-unsplash.png') }}" width="97%">
                 </div>
-            </div>
+            </div> --}}
         </div>
     </main>
     {{-- End Main Content --}}

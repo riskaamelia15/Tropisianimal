@@ -42,9 +42,9 @@ Route::post('/login', [LoginController::class, 'auth'])
 ;
 
 // Route dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})
+Route::resource('/dashboard', DashboardPostController::class);
+
+Route::get('/dashboard', [DashboardPostController::class, 'dashboard'])
 // ->middleware('auth')
 ;
 

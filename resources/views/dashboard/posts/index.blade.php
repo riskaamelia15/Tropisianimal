@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mt-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">My Posts</h1>
+                    <h1 class="m-0">Berita</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -16,12 +16,9 @@
     <div class="container">
         <hr>
 
-        @if (session()->has('posted'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('posted') }}
-                <button type="submit" data-bs-dismiss="alert">
-                    <i class="nav-icon fas fa-times"></i>
-                </button>
+        @if (session()->has('success'))
+            <div class="alert alert-success col-lg-8" role="alert">
+                {{ session('success') }}
             </div>
         @endif
 
@@ -34,7 +31,6 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Excerpt</th>
                         <th scope="col">View</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
@@ -46,17 +42,22 @@
 
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->excerpt }}</td>
+
+                            {{-- Tombol kembali --}}
                             <td>
                                 <a href="/dashboard/posts/{{ $post->slug }}" class="badge badge-info border-0">
                                     <i class="nav-icon far fa-eye"></i>
                                 </a>
                             </td>
+
+                            {{-- Tombol edit --}}
                             <td>
-                                <a href="/dashboard/posts/{{ $post->id }}" class=" badge badge-warning border-0">
+                                <a href="/dashboard/posts/{{ $post->slug }}/edit" class=" badge badge-warning border-0">
                                     <i class="nav-icon far fa-edit"></i>
                                 </a>
                             </td>
+
+                            {{-- Tombol delete --}}
                             <td>
                                 <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
                                     @method('delete')
